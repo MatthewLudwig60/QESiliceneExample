@@ -1,0 +1,5 @@
+&PROJWFC
+  prefix= 'silicene_pdos',
+  outdir= '.',
+  filpdos= 'silicene_pdos.dat'
+/

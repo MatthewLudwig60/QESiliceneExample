@@ -1,0 +1,24 @@
+# load the pw.x input from file
+load_fromPWI silicene_scf.in
+
+# open a file for writing resulting total energies
+set fid [open etot_vs_ecutrho.dat w]
+
+# loop over different "ecutrho" values
+foreach ecutrho { 100 150 200 250 300 350 400 } {
+
+    # name of I/O files: $name.in & $name.out
+    set name silicene_scf_ecutrho-$ecutrho
+
+    # set the pw.x "ecutrho" variable
+    SYSTEM "ecutrho = $ecutrho"
+
+    # run the pw.x calculation
+    runPW $name.in
+
+    # extract the "total energy" and write it to file
+    set Etot [::pwtk::pwo::totene $name.out]
+    puts $fid "$ecutrho $Etot"
+}
+
+close $fid

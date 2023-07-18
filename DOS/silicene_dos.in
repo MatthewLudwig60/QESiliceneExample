@@ -1,0 +1,7 @@
+&DOS
+  prefix = 'silicene_dos',
+  outdir = '.',
+  fildos = 'silicene_dos.dat',
+  !emin = -15,
+  !emax = 4
+/

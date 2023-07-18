@@ -1,0 +1,38 @@
+ &CONTROL
+   calculation     =  'scf'
+   outdir          =  '.'
+   prefix          =  'silicene'
+   pseudo_dir      =  '../pseudos/'
+ /
+
+ &SYSTEM
+   celldm(1)       =  7.2962
+   celldm(2)       =  1.7321
+   celldm(3)       =  5.1800
+   degauss         =  0.01
+   ecutrho         =  100
+   ecutwfc         =  50
+   ibrav           =  -9
+   nat             =  2
+   ntyp            =  1
+   occupations     =  'smearing'
+   smearing        =  'gaussian'
+ /
+
+ &ELECTRONS
+   conv_thr        =  1e-8
+ /
+
+ATOMIC_SPECIES 
+  Si    28.0855   Si.pbe-n-kjpaw_psl.1.0.0.UPF 
+
+
+ATOMIC_POSITIONS crystal
+  Si       0.666666666700   0.333333333300   0.395291066700
+  Si       0.333333333300   0.666666666700   0.417208933300
+
+K_POINTS automatic
+  10   10   1   0   0   0 
+
+
+

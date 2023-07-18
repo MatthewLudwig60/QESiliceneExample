@@ -1,0 +1,23 @@
+# load the pw.x input from file
+load_fromPWI silicene_scf.in
+
+# open a file for writing resulting total energies
+set fid [open etot_vs_kpoints.dat w]
+
+# loop over different "kpoints" values
+foreach k { 6 8 10 12 14 } {
+
+    # name of I/O files: $name.in & $name.out
+    set name silicene_scf_kpoints-$k
+
+    K_POINTS automatic "$k $k 1 0 0 0"
+
+    # run the pw.x calculation
+    runPW $name.in
+
+    # extract the "total energy" and write it to file
+    set Etot [::pwtk::pwo::totene $name.out]
+    puts $fid "$k $Etot"
+}
+
+close $fid
